@@ -63,15 +63,7 @@ export function QuestsCount() {
     const isSafe = totalQuests > 0;
 
     return (
-        <Flex flexDirection="column" className="quest-button-badges-container">
-            {/* Warning Banner — visible when quests are in progress */}
-            {status.enrolled > 0 && (
-                <div className="quest-warning-banner">
-                    ⚠️ Do not restart Discord while auto-questing is in progress — it may cause reward claim errors.
-                </div>
-            )}
-
-            <Flex flexDirection="row" justifyContent="flex-end" className="quest-button-badges" gap="5px">
+        <Flex flexDirection="row" justifyContent="flex-end" className="quest-button-badges" gap="5px">
                 {/* Account Health Banner / Indicator */}
                 <Tooltip text={isSafe ? "🟢 Account Health: SAFE. Quests are populating normally. Stealth active." : "🟡 Account Health: RESTRICTED. No quests available. Possible shadowban! Stop automation."}>
                     {(props) => (
@@ -128,7 +120,6 @@ export function QuestsCount() {
                         </button>
                     )}
                 </Tooltip>
-            </Flex>
         </Flex>
     );
 }

@@ -438,11 +438,13 @@ function completeQuest(quest: QuestValue) {
                         // HTTP 403 with code 50165 = age-gated or delisted activity
                         if (err?.status === 403 || err?.body?.code === 50165) {
                             console.error(`[Achievement] Age-gated or delisted activity for ${questName}. Cannot bypass. Verify your age in Discord settings first.`);
+                            completingQuest.set(quest.id, false);
+                            return;
                         } else {
-                            console.error(`[Achievement] Failed to get proxy ticket for ${questName}:`, err);
+                            console.warn(`[Achievement] Failed to get proxy ticket for ${questName} (likely not supported by this activity). Falling back to heartbeat spoofing...`);
+                            await achievementHeartbeatFallback(quest, secondsNeeded, secondsDone, questName);
+                            return;
                         }
-                        completingQuest.set(quest.id, false);
-                        return;
                     }
 
                     // Step 2: Use the proxy ticket to authorize with discordsays via native module
