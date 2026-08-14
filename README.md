@@ -1,3 +1,8 @@
+> [!WARNING]
+> **THIS PLUGIN DOES NOT WORK ANYMORE.**
+> 
+> This project is no longer functional due to discord newest updates/patches
+
 # CompleteDiscordQuest for Vencord
 
 A Vencord(VC) plugin that completes you multiple discord quests in background simultaneously.
